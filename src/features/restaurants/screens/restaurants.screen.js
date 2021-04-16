@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { View, FlatList } from "react-native";
-import { Searchbar } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import styled from "styled-components/native";
 import { Spacer } from "../../../components/spacer/spacer.component";
@@ -25,7 +24,7 @@ const LoadingContainer = styled(View)`
 `;
 
 export const RestaurantsScreen = () => {
-  const { isLoading, error, restaurants } = useContext(RestaurantContext);
+  const { isLoading, restaurants } = useContext(RestaurantContext);
   return (
     <SafeArea>
       {isLoading && (
