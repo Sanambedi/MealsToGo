@@ -1,18 +1,20 @@
 import React from "react";
 import { SvgXml } from "react-native-svg";
-import star from "../../../../assets/star";
-import open from "../../../../assets/open";
+
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
+import star from "../../../../assets/star";
+import open from "../../../../assets/open";
+
 import {
-  Icon,
   RestaurantCard,
   RestaurantCardCover,
-  Address,
   Info,
   Section,
-  Rating,
   SectionEnd,
+  Rating,
+  Icon,
+  Address,
 } from "./restaurant-info-card.styles";
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
@@ -30,12 +32,12 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
-  console.log(ratingArray);
+
   return (
     <RestaurantCard elevation={5}>
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
-        <Text variant="error">{name}</Text>
+        <Text variant="label">{name}</Text>
         <Section>
           <Rating>
             {ratingArray.map((_, i) => (
@@ -49,14 +51,12 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
           </Rating>
           <SectionEnd>
             {isClosedTemporarily && (
-              <Text variant="caption" style={{ color: "red" }}>
-                CLOSED TEMPORARILY
-              </Text>
+              <Text variant="error">CLOSED TEMPORARILY</Text>
             )}
-            <Spacer position="left" size="large">
+            <Spacer position="right" size="large">
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
             </Spacer>
-            <Spacer position="left" size="large">
+            <Spacer position="right" size="large">
               <Icon source={{ uri: icon }} />
             </Spacer>
           </SectionEnd>
